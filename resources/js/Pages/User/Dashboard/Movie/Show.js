@@ -7,15 +7,25 @@ export default function Show({ movie }) {
             class="mx-auto w-screen h-screen relative watching-page font-poppins bg-form-bg"
             id="stream"
         >
-            <div className="pt-[100px]">
-                <ReactPlayer
-                    url={movie.video_url}
-                    controls
-                    width={"100%"}
-                    height={"850px"}
-                />
-            </div>
 
+            <div className="pt-[100px]">
+                {movie.video_url.includes("drive.google") ? (
+                    <iframe 
+                        src={movie.video_url}
+                        width="100%" 
+                        height="850" 
+                        allow="autoplay"
+                    />
+                ) : (
+                    <ReactPlayer
+                        url={movie.video_url}
+                        controls
+                        width={"100%"}
+                        height={"850px"}
+                    />
+                )}
+            </div>
+            
             {/* Button back to dashboard */}
             <div class="absolute top-5 left-5 z-20">
                 <Link href={route("user.dashboard.index")}>
