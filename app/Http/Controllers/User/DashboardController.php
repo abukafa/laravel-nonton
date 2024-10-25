@@ -8,29 +8,13 @@ use App\Models\Movie;
 
 class DashboardController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        // $featuredMovies = Movie::whereIsFeatured(true)->get();
-        // $movies = Movie::all();
-        // return inertia('User/Dashboard/Index', [
-        //     'featuredMovies' => $featuredMovies,
-        //     'movies' => $movies,
-        // ]);
-
-        $searchTerm = $request->input('search', '');
-        $moviesQuery = Movie::query();
-
-        if ($searchTerm) {
-            $moviesQuery->where('name', 'like', '%' . $searchTerm . '%');
-        }
-
-        $featuredMovies = Movie::whereIsFeatured(true)->get();
-        $movies = $moviesQuery->orderBy('id', 'desc')->get();
-
+        $featuredMovies = Movie::whereIsFeatured(true)->orderBy('id', 'desc')->get();
+        $movies = Movie::inRandomOrder()->get();
         return inertia('User/Dashboard/Index', [
             'featuredMovies' => $featuredMovies,
             'movies' => $movies,
-            'searchTerm' => $searchTerm,
         ]);
     }
 }

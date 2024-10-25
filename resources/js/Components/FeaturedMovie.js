@@ -21,7 +21,7 @@ export default function FeaturedMovie({
             {/* Movie Thumbnail */}
             <img
                 src={`/storage/${thumbnail}`}
-                className="object-cover rounded-[30px] w-[520px] h-[340px]"
+                className="object-cover rounded-[30px] w-[468px] h-[306px]"
                 alt=""
             />
             {/* rating */}
@@ -39,7 +39,7 @@ export default function FeaturedMovie({
                                 rounded-br-[28px] flex justify-between items-center px-7 h-[130px]"
             >
                 <div>
-                    <div className="font-medium text-[22px] text-white">
+                    <div className="font-medium text-[20px] text-white">
                         {name}
                     </div>
                     <p className="mb-0 text-white text-sm font-light">

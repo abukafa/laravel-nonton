@@ -4,7 +4,6 @@ import {Link} from '@inertiajs/inertia-react'
 export default function Topbar({ name }) {
     const [dropdownOpen, setDropdownOpen] = useState(true);
     const dropdownTarget = useRef();
-    const [searchTerm, setSearchTerm] = useState("");
 
     const triggerDropdown = () => {
         if (dropdownOpen) {
@@ -15,20 +14,10 @@ export default function Topbar({ name }) {
         setDropdownOpen(!dropdownOpen);
     };
 
-    const handleSearch = (event) => {
-        setSearchTerm(event.target.value);
-        onSearch(event.target.value);
-    };
-
     return (
         <div className="flex justify-between items-center cursor-pointer">
-            <input
-                type="text"
-                className="top-search"
-                placeholder="Search movie, cast, genre"
-                value={searchTerm}
-                onChange={handleSearch}
-            />
+            <img src="/images/moonton.svg" alt="" />
+            {/* <input type="text" className="top-search" placeholder="Search movie, cast, genre" /> */}
             <div className="flex items-center gap-4">
                 <span className="text-black text-sm font-medium">
                     Welcome, {name}
@@ -45,25 +34,31 @@ export default function Topbar({ name }) {
                         />
                     </div>
                     <div
-                        className="bg-white rounded-2xl text-black font-medium flex flex-col gap-1 absolute z-[999] right-0 top-[80px] min-w-[180px] hidden overflow-hidden"
+                        className="bg-white border border-gray-300 rounded-2xl text-black font-medium flex flex-col gap-1 absolute z-[999] right-0 top-[80px] min-w-[180px] hidden overflow-hidden"
                         ref={dropdownTarget}
                     >
                         <Link
-                            href="/dashboard"
-                            className="transition-all hover:bg-sky-100 p-4"
+                            href={route('user.dashboard.index')}
+                            className="transition-all hover:bg-gray-100 p-4"
                         >
                             Dashboard
                         </Link>
                         <Link
+                            href={route('user.dashboard.subscriptionPlan.index')}
+                            className="transition-all hover:bg-gray-100 p-4"
+                        >
+                            Subscription
+                        </Link>
+                        <Link
                             href="/admin/movie"
-                            className="transition-all hover:bg-sky-100 p-4"
+                            className="transition-all hover:bg-gray-100 p-4"
                         >
                             Admin
                         </Link>
                         <Link
                             href={route('logout')}
                             method="post"
-                            className="transition-all hover:bg-sky-100 p-4"
+                            className="transition-all hover:bg-gray-100 p-4"
                         >
                             Sign Out
                         </Link>
