@@ -24,6 +24,7 @@ Route::redirect('/', '/login');
 
 Route::middleware(['auth'])->prefix('dashboard')->name('user.dashboard.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
+    Route::get('categories', [DashboardController::class, 'movieList'])->name('movieList');
 
     Route::get('movie/{movie:slug}', [MovieController::class, 'show'])->name('movie.show');
 

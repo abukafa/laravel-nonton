@@ -44,6 +44,12 @@ export default function Topbar({ name }) {
                             Dashboard
                         </Link>
                         <Link
+                            href={route('user.dashboard.movieList')}
+                            className="transition-all hover:bg-gray-100 p-4"
+                        >
+                            Categories
+                        </Link>
+                        <Link
                             href={route('user.dashboard.subscriptionPlan.index')}
                             className="transition-all hover:bg-gray-100 p-4"
                         >

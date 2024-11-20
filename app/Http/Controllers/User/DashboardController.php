@@ -17,4 +17,12 @@ class DashboardController extends Controller
             'movies' => $movies,
         ]);
     }
+
+    public function movieList()
+    {
+        $movies = Movie::inRandomOrder()->get();
+        return inertia('User/MovieList', [
+            'movies' => $movies,
+        ]);
+    }
 }
